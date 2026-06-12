@@ -18,7 +18,6 @@ export default function Register() {
       await googleLogin(credentialResponse.credential)
       navigate('/onboarding')
     } catch (err) {
-      console.error('Google registration error context:', err.response?.data)
       toast.error(err.response?.data?.message || 'Google signup failed')
     }
   }
@@ -123,13 +122,13 @@ export default function Register() {
           <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--border)' }} />
         </div>
 
-        <div className="w-full flex justify-center">
+        <div style={{ width: '100%', display: 'block' }}>
           <GoogleLogin
             onSuccess={handleGoogleSuccess}
             onError={() => toast.error('Google signup failed')}
             theme="outline"
             size="large"
-            width="352px"
+            width="100%"
             shape="rectangular"
           />
         </div>
