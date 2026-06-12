@@ -46,7 +46,7 @@ export default function Register() {
   return (
     <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-base)' }}>
       <div style={{ maxWidth: 400, width: '100%', padding: '0 24px' }}>
-        <Link to="/" style={{ textDecoration: 'none' }} className="flex items-center justify-center gap-2.5 mb-8">
+        <Link to="/" className="flex items-center justify-center gap-2.5 mb-8" style={{ textDecoration: 'none' }}>
           <div style={{
             width: 36, height: 36, borderRadius: 8,
             background: 'linear-gradient(135deg, #00C98A, #00C98A)',
@@ -73,45 +73,103 @@ export default function Register() {
             <label className="block mb-1.5 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 13, color: 'var(--text-muted)' }}>
               Full Name
             </label>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Khuzaima" required
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Khuzaima"
+              required
               className="w-full rounded-lg px-4 py-3 text-sm transition-all duration-200"
-              style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', color: 'var(--text-primary)', fontFamily: "'Inter', sans-serif", fontSize: 15, outline: 'none' }} />
+              style={{
+                background: 'var(--bg-elevated)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 15,
+                outline: 'none',
+              }}
+            />
           </div>
 
           <div>
             <label className="block mb-1.5 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 13, color: 'var(--text-muted)' }}>
               University
             </label>
-            <input type="text" value={university} onChange={(e) => setUniversity(e.target.value)} placeholder="FAST Lahore, NUST, UET..."
+            <input
+              type="text"
+              value={university}
+              onChange={(e) => setUniversity(e.target.value)}
+              placeholder="FAST Lahore, NUST, UET..."
               className="w-full rounded-lg px-4 py-3 text-sm transition-all duration-200"
-              style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', color: 'var(--text-primary)', fontFamily: "'Inter', sans-serif", fontSize: 15, outline: 'none' }} />
+              style={{
+                background: 'var(--bg-elevated)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 15,
+                outline: 'none',
+              }}
+            />
           </div>
 
           <div>
             <label className="block mb-1.5 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 13, color: 'var(--text-muted)' }}>
               Email
             </label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@university.edu" required
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@university.edu"
+              required
               className="w-full rounded-lg px-4 py-3 text-sm transition-all duration-200"
-              style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', color: 'var(--text-primary)', fontFamily: "'Inter', sans-serif", fontSize: 15, outline: 'none' }} />
+              style={{
+                background: 'var(--bg-elevated)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 15,
+                outline: 'none',
+              }}
+            />
           </div>
 
           <div>
             <label className="block mb-1.5 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 13, color: 'var(--text-muted)' }}>
               Password
             </label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Min 6 characters" required minLength={6}
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Min 6 characters"
+              required
+              minLength={6}
               className="w-full rounded-lg px-4 py-3 text-sm transition-all duration-200"
-              style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', color: 'var(--text-primary)', fontFamily: "'Inter', sans-serif", fontSize: 15, outline: 'none' }} />
+              style={{
+                background: 'var(--bg-elevated)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 15,
+                outline: 'none',
+              }}
+            />
           </div>
 
-          <button type="submit" disabled={submitting}
+          <button
+            type="submit"
+            disabled={submitting}
             className="w-full text-white font-bold transition-all duration-200 rounded-lg py-3 mt-2"
             style={{
-              background: submitting ? '#00A370' : 'linear-gradient(135deg, #00C98A, #00C98A)', border: 'none',
-              fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 15,
+              background: submitting ? '#00A370' : 'linear-gradient(135deg, #00C98A, #00C98A)',
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
+              fontSize: 15,
+              border: 'none',
               cursor: submitting ? 'not-allowed' : 'pointer',
-            }}>
+            }}
+          >
             {submitting ? 'Creating account...' : 'Create Account'}
           </button>
         </form>
@@ -122,15 +180,14 @@ export default function Register() {
           <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--border)' }} />
         </div>
 
-        <div style={{ width: '100%' }}>
+        <div className="w-full flex justify-center">
           <GoogleLogin
             onSuccess={handleGoogleSuccess}
             onError={() => toast.error('Google signup failed')}
             theme="outline"
             size="large"
-            width="100%"
+            width="352px"
             shape="rectangular"
-            useOneTap={false}
           />
         </div>
 
