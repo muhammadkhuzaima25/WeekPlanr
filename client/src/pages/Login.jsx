@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import api from '../services/api'
@@ -12,11 +12,23 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' && !import.meta.env.VITE_GOOGLE_CLIENT_ID) {
+      console.warn('⚠️ WeekPlanr Alert: VITE_GOOGLE_CLIENT_ID environment variable is missing or undefined.');
+    }
+  }, [])
+
   const navigateAfterAuth = async () => {
-    const subjectsRes = await api.get('/subjects')
-    if (subjectsRes.data.length === 0) {
-      navigate('/onboarding')
-    } else {
+    try {
+      const subjectsRes = await api.get('/subjects')
+      if (subjectsRes.data.length === 0) {
+        navigate('/onboarding')
+      } else {
+        navigate('/weekly-plan')
+      }
+    } catch (err) {
+      console.error('Error navigating after auth:', err.message)
+
       navigate('/weekly-plan')
     }
   }
@@ -46,10 +58,12 @@ export default function Login() {
 
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
+      // Sends credential token directly to backend context integration logic
       await googleLogin(credentialResponse.credential)
       await navigateAfterAuth()
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Google login failed')
+      console.error('Google login execution error:', err.response?.data)
+      toast.error(err.response?.data?.message || 'Google login verification failed')
     }
   }
 
@@ -151,14 +165,16 @@ export default function Login() {
           <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--border)' }} />
         </div>
 
-        <GoogleLogin
-          onSuccess={handleGoogleSuccess}
-          onError={() => toast.error('Google login failed')}
-          theme="outline"
-          size="large"
-          width="100%"
-          shape="rectangular"
-        />
+        <div className="w-full flex justify-center">
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => toast.error('Google login failed')}
+            theme="outline"
+            size="large"
+            width="352px"
+            shape="rectangular"
+          />
+        </div>
 
         <p className="text-center mt-6" style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'var(--text-muted)' }}>
           Don't have an account?{' '}
@@ -170,4 +186,3 @@ export default function Login() {
     </div>
   )
 }
-
