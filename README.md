@@ -68,6 +68,14 @@ WeekPlanr solves all four with AI-generated weekly schedules, deadline radar vis
 
 ---
 
+## 🖥️ UI Preview
+
+<p align="center">
+  <img src="client/public/weekplanr_Dashboard.png" alt="AptifyAI Dashboard" width="85%" style="border-radius:16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+</p>
+
+---
+
 ## ✨ Key Features
 
 | Feature | Description |
@@ -264,6 +272,11 @@ WeekPlanr/
 - [ ] Mobile app — React Native version
 - [ ] Pomodoro / Study timer integration
 - [ ] File attachments — upload assignment PDFs
+
+---
+
+🔍 SEO Keywords
+AI study planner · weekly study planner for students · semester planner app · student productivity app · AI schedule generator · university student planner · deadline tracker students · assignment and quiz tracker · drag and drop study planner · overwhelm mode study app · MERN stack portfolio project · React Node.js MongoDB Express · Pakistani university student app · smart semester organizer · academic planner 2026 · free study planner · AI powered task prioritization · Vercel Render deployment
 
 ---
 
