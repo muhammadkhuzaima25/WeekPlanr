@@ -275,8 +275,8 @@ WeekPlanr/
 
 ---
 
-🔍 SEO Keywords
-AI study planner · weekly study planner for students · semester planner app · student productivity app · AI schedule generator · university student planner · deadline tracker students · assignment and quiz tracker · drag and drop study planner · overwhelm mode study app · MERN stack portfolio project · React Node.js MongoDB Express · Pakistani university student app · smart semester organizer · academic planner 2026 · free study planner · AI powered task prioritization · Vercel Render deployment
+## 🔍 SEO Keywords
+`AI study planner` · `weekly study planner for students` · `semester planner app` · `student productivity app` · `AI schedule generator` · `university student planner` · `deadline tracker students` · `assignment and quiz tracker` · `drag and drop study planner` · `overwhelm mode study app` · `MERN stack portfolio project` · `React Node.js MongoDB Express` · `Pakistani university student app` · `smart semester organizer` · `academic planner 2026` · `free study planner` · `AI powered task prioritization` · `Vercel Render deployment`
 
 ---
 
