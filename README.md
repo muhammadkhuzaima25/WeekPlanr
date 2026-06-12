@@ -71,7 +71,7 @@ WeekPlanr solves all four with AI-generated weekly schedules, deadline radar vis
 ## 🖥️ UI Preview
 
 <p align="center">
-  <img src="client/public/weekplanr_Dashboard.png" alt="AptifyAI Dashboard" width="85%" style="border-radius:16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+  <img src="client/public/weekplanr.Dashboard.png" alt="WeekPlanr Dashboard" width="85%" style="border-radius:16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
 </p>
 
 ---
