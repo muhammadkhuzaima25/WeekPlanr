@@ -41,16 +41,17 @@ app.use(cors({
 }))
 app.use(express.json())
 
-// Health check — real mongo status
-app.get('/api/health', (req, res) => {
+// Root route for Vercel deployment health check & status
+app.get('/', (req, res) => {
   const mongoState = {
     0: 'disconnected ❌',
     1: 'connected ✅',
     2: 'connecting...',
     3: 'disconnecting...',
   }
-  res.json({
-    status: 'ok',
+  res.status(200).json({
+    status: "online",
+    message: "WeekPlanr Backend API is running smoothly!",
     port: PORT,
     mongo: mongoState[mongoose.connection.readyState] || 'unknown',
     db: mongoose.connection.name || 'N/A',
@@ -65,7 +66,7 @@ app.use('/api/auth/register', registerLimiter)
 app.use('/api/auth/google',   apiLimiter)
 
 // Routes
-app.use('/api/auth',     authRoutes)
+app.use('/api/auth',      authRoutes)
 app.use('/api/subjects', subjectRoutes)
 app.use('/api/tasks',    taskRoutes)
 app.use('/api/schedule', scheduleRoutes)
@@ -92,7 +93,7 @@ const startServer = async () => {
     setInterval(autoArchiveOverdueTasks, 60 * 60 * 1000) // then every hour
     app.listen(PORT, () => {
       console.log(`✅ Server running on http://localhost:${PORT}`)
-      console.log(`✅ Health: http://localhost:${PORT}/api/health`)
+      console.log(`✅ Health Check: http://localhost:${PORT}/`)
       console.log(`📦 ENV: PORT=${PORT} | MONGO=${process.env.MONGO_URI ? 'OK' : 'MISSING'}`)
     })
   } catch (err) {
