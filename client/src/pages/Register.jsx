@@ -122,7 +122,17 @@ export default function Register() {
           <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--border)' }} />
         </div>
 
-        <div style={{ width: '100%', display: 'block' }}>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }} className="google-btn-wrapper">
+          <style>{`
+            .google-btn-wrapper iframe {
+              width: 100% !important;
+              min-width: 100% !important;
+              max-width: 100% !important;
+            }
+            .google-btn-wrapper > div {
+              width: 100% !important;
+            }
+          `}</style>
           <GoogleLogin
             onSuccess={handleGoogleSuccess}
             onError={() => toast.error('Google signup failed')}
