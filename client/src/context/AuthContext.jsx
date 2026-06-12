@@ -27,7 +27,6 @@ export const AuthProvider = ({ children }) => {
   }
 
   const googleLogin = async (credential) => {
-    // Fixed: Proper single /api prefix
     const res = await api.post('/api/auth/google', { credential })
     localStorage.setItem('token', res.data.token)
     setUser(res.data.user)
