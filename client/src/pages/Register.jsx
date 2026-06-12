@@ -18,6 +18,7 @@ export default function Register() {
       await googleLogin(credentialResponse.credential)
       navigate('/onboarding')
     } catch (err) {
+      console.error('Google registration error context:', err.response?.data)
       toast.error(err.response?.data?.message || 'Google signup failed')
     }
   }
@@ -44,18 +45,16 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-deep)' }}>
+    <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-base)' }}>
       <div style={{ maxWidth: 400, width: '100%', padding: '0 24px' }}>
         <Link to="/" style={{ textDecoration: 'none' }} className="flex items-center justify-center gap-2.5 mb-8">
           <div style={{
-            width: 36, height: 36, borderRadius: 10,
-            background: 'linear-gradient(135deg, #00C98A, #00A370)',
-            boxShadow: '0 0 20px rgba(0,201,138,0.3)',
+            width: 36, height: 36, borderRadius: 8,
+            background: 'linear-gradient(135deg, #00C98A, #00C98A)',
+            boxShadow: '0 0 12px #00C98A50',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 16, fontWeight: 800, color: '#0A0A0A',
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
           }}>
-            S
+            <span className="text-white font-bold text-lg" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>W</span>
           </div>
           <div className="flex items-baseline gap-0">
             <span className="font-bold text-xl" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'var(--text-primary)' }}>Week</span>
@@ -108,10 +107,10 @@ export default function Register() {
           </div>
 
           <button type="submit" disabled={submitting}
-            className="w-full font-bold transition-all duration-200 rounded-lg py-3 mt-2"
+            className="w-full text-white font-bold transition-all duration-200 rounded-lg py-3 mt-2"
             style={{
-              background: submitting ? '#00A370' : '#00C98A', border: 'none',
-              color: '#0A0A0A', fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 15,
+              background: submitting ? '#00A370' : 'linear-gradient(135deg, #00C98A, #00C98A)', border: 'none',
+              fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 15,
               cursor: submitting ? 'not-allowed' : 'pointer',
             }}>
             {submitting ? 'Creating account...' : 'Create Account'}
@@ -124,14 +123,16 @@ export default function Register() {
           <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--border)' }} />
         </div>
 
-        <GoogleLogin
-          onSuccess={handleGoogleSuccess}
-          onError={() => toast.error('Google signup failed')}
-          theme="outline"
-          size="large"
-          width="100%"
-          shape="rectangular"
-        />
+        <div className="w-full flex justify-center">
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => toast.error('Google signup failed')}
+            theme="outline"
+            size="large"
+            width="352px"
+            shape="rectangular"
+          />
+        </div>
 
         <p className="text-center mt-6" style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'var(--text-muted)' }}>
           Already have an account?{' '}
@@ -143,4 +144,3 @@ export default function Register() {
     </div>
   )
 }
-
